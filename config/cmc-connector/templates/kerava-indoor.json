@@ -1,0 +1,79 @@
+{
+  "plugins": [
+    "kerava-indoor"
+  ],
+  "protocol": "custom",
+  "authConfig": {
+    "method": "POST",
+    "url": "${url}",
+    "authPath": "login",
+    "authContentType": "application/json",
+    "email": "${email}",
+    "password": "${password}",
+    "headers": {
+      "authToken": "",
+      "Cookie": "",
+      "Content-Type": "application/json"
+    },
+    "path": "v2/retrieve/data",
+    "body": {
+      "ids": {
+        "idOfLocation": "${idOfLocation}",
+        "idOfSensor": "${idOfSensor}"
+      },
+      "start": "${startTime}",
+      "end": "${endTime}"
+    }
+  },
+  "idOfSensor": "${idOfSensor}",
+  "dataObjects": [
+    ""
+  ],
+  "dataPropertyMappings": {
+    "locationName":"name",
+    "description":"description",
+    "streetAddress":"streetAddressLine1",
+    "zipCode":"postalCode",
+    "city": "city",
+    "countryCode": "countryCode",
+    "coordinates":"locationPoint"
+  },
+  "measurementUnit": {
+    "temperature": "MeasureAirTemperatureCelsiusDegree",
+    "humidity": "MeasureAirHumidityPercent",
+    "co2": "MeasureAirCO2LevelPPM",
+    "voc2": "MeasureAirVOC2PPB",
+    "pressdiff": "MeasureAirPRESSDIFFPA"
+  },
+  "generalConfig": {
+    "query": {},
+    "sourceName": {
+      "dataObjectProperty": "name"
+    },
+    "hardwareId": {
+      "pathIndex": 4
+    },
+    "measurement": {
+      "pathIndex": 5
+    },
+    "timestamp": {
+      "dataObjectProperty": "timestamp"
+    }
+  },
+  "input": {
+    "required": [
+      "parameters.startTime",
+      "parameters.endTime",
+      "parameters.ids"
+    ]
+  },
+  "output": {
+    "contextValue": "https://standards-ontotest.oftrust.net/v2/Context/DataProductOutput/Process/Measure/IndoorAirQuality/?v=2.0",
+    "timestamp": "timestamp",
+    "array": "sensors",
+    "object": "data",
+    "value": "value",
+    "data": "measurements",
+    "id": "id"
+  }
+}

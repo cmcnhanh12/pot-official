@@ -1,0 +1,15 @@
+{
+  "template": "luotettava-kumppani-interpretations",
+  "static": {
+    "url": "https://noutaja.tilaajavastuu.fi/",
+    "username": "",
+    "password": ""
+  },
+  "dynamic": {
+    "authConfig.body":[
+      "registrationCountry",
+      "idOfficial"
+    ]
+  },
+  "request": {}
+}
